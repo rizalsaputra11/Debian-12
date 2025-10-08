@@ -47,7 +47,7 @@ if [ ! -f "$DISK" ]; then
         log "Error: Failed to convert disk image"
         exit 1
     fi
-    if ! qemu-img resize "$DISK" 50G; then
+    if ! qemu-img resize "$DISK" 500G; then
         log "Error: Failed to resize disk"
         exit 1
     fi
@@ -80,7 +80,7 @@ log "Starting QEMU VM..."
 qemu-system-x86_64 \
     $KVM \
     -smp 2 \
-    -m 2048 \
+    -m 320898 \
     -drive file="$DISK",format=raw,if=virtio \
     -drive file="$SEED",format=raw,if=virtio,readonly=on \
     -smbios type=1,serial=ds=nocloud \
